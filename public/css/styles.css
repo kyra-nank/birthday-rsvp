@@ -20,18 +20,34 @@ body {
   color: #4698b0;
 }
 
+.confirm {
+  margin-top: 15px;
+}
+
 .container {
   height: 100vh;
   position: relative;
   width: 100vw;
 }
 
+.cover-title {
+  margin-bottom: 20px;
+}
+
 h3 {
+  font-family: 'Lustria', serif;
+}
+
+h4 {
   font-family: 'Lustria', serif;
 }
 
 input {
   text-align: center;
+}
+
+input:invalid {
+  color: red;
 }
 
 input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */

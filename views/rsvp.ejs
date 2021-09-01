@@ -11,16 +11,15 @@
           <input class="form-control top" type="text" name="fName" placeholder="First Name" required>
           <input class="form-control middle" type="text" name="lName" placeholder="Last Name" required>
           <input class="form-control middle" type="tel" name="phone" placeholder="Phone Number" required>
-          <input class="form-control bottom" type="text" name="entranceCode" placeholder="Entrance Code" required>
+          <input class="form-control bottom" type="text" name="entryCode" placeholder="Entry Code" required pattern="2000">
         </div>
 
         <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="legal">
+            <input class="form-check-input" type="checkbox" value="" id="legal" required>
             <label class="form-check-label" for="legal">I am of legal drinking age</label>
         </div>
 
         <button class="btn btn-info form-control next-button" type="submit" name="submit">Next</button>
-
 
       </form>
 

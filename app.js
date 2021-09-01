@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-const spotsRemaining = 165;
+var spotsRemaining = 165;
 
 // render home page
 app.get('/', function(req, res) {
@@ -24,21 +24,24 @@ app.get('/details', function(req, res) {
   res.render('details');
 });
 
+// render the success page
+app.get('/success', function(req, res) {
+  res.render('success');
+});
+
 // response from home page
 app.post('/', function(req, res) {
-  // first name - req
-  // last name - req
-  // phone number - req
-  // party code - req, validate that it equals another value
-  // checkbox - req
+  // first name - send to mongo
+  // last name - send to mongo
+  // phone number - send to mongo
 
-  // info received w/o issues, res.redirect('payment')
+  res.redirect('/payment');
+
 });
 
 // response from 'done' button on payment page
 app.post('/payment', function(res, req) {
-  fName = 'Name from DB'
-  res.render('success', {fName: fName});
+  res.render('success');
 });
 
 // listen on local host 3000
