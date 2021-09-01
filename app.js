@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 // connect to database
-mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
 // create new mongoose schema for attendee data
 const attendeeSchema = new mongoose.Schema({
@@ -68,10 +68,10 @@ app.post('/payment', function(res, req) {
 // listen on local host 3000
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 3000
+  port = 3000;
 }
 app.listen(port, function() {
-  console.log('Server started on port 3000')
+  console.log('Server started successfully');
 });
 
 // HEROKU LINK
