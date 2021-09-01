@@ -19,6 +19,11 @@ app.get('/payment', function(req, res) {
   res.render('payment');
 });
 
+// render the details page
+app.get('/details', function(req, res) {
+  res.render('details');
+});
+
 // response from home page
 app.post('/', function(req, res) {
   // first name - req
@@ -34,4 +39,9 @@ app.post('/', function(req, res) {
 app.post('/payment', function(res, req) {
   fName = 'Name from DB'
   res.render('success', {fName: fName});
+});
+
+// listen on local host 3000
+app.listen(3000, function() {
+  console.log('Server started on port 3000')
 });
