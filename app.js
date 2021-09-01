@@ -9,7 +9,29 @@ app.use(express.static('public'));
 
 const spotsRemaining = 165;
 
-// home page
+// render home page
 app.get('/', function(req, res) {
   res.render('rsvp', {spotsRemaining: spotsRemaining});
+});
+
+// render the payment page
+app.get('/payment', function(req, res) {
+  res.render('payment');
+});
+
+// response from home page
+app.post('/', function(req, res) {
+  // first name - req
+  // last name - req
+  // phone number - req
+  // party code - req, validate that it equals another value
+  // checkbox - req
+
+  // info received w/o issues, res.redirect('payment')
+});
+
+// response from 'done' button on payment page
+app.post('/payment', function(res, req) {
+  fName = 'Name from DB'
+  res.render('success', {fName: fName});
 });
