@@ -75,7 +75,7 @@ label {
 
 .main {
   text-align: center;
-  width: 50%;
+  width: 300px;
 }
 
 .middle {
@@ -99,7 +99,7 @@ p {
 
 .rsvp-form {
   margin: auto;
-  max-width: 80%;
+  max-width: 300px;
   width: 80%;
 }
 
