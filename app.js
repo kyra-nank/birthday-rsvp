@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 // connect to database
-mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+heroku config:set MONGODB_URI="mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority"
+//mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
 // create new mongoose schema for attendee data
 const attendeeSchema = new mongoose.Schema({
