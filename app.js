@@ -8,9 +8,8 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
-// connect to database
-heroku config:set MONGODB_URI="mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority"
-//mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+// connect to database - remember to go to Heroku and add config vars
+mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
 // create new mongoose schema for attendee data
 const attendeeSchema = new mongoose.Schema({
