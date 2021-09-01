@@ -1,11 +1,25 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
 const app = express();
 
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
+
+// connect to database
+mongoose.connect("mongodb+srv://admin-kyra:2000@cluster0.bjc7w.mongodb.net/rsvpDB", {useNewUrlParser: true, useUnifiedTopology: true});
+
+// create new mongoose schema for attendee data
+const attendeeSchema = new mongoose.Schema({
+  fName: String,
+  lName: String,
+  phone: String
+});
+
+// create new model
+const Attendee = mongoose.model('Attendee', attendeeSchema);
 
 var spotsRemaining = 165;
 
@@ -29,19 +43,26 @@ app.get('/success', function(req, res) {
   res.render('success');
 });
 
-// response from home page
+// response from home page - add attendee to database
 app.post('/', function(req, res) {
-  // first name - send to mongo
-  // last name - send to mongo
-  // phone number - send to mongo
+  const fName = req.body.fName;
+  const lName = req.body.lName;
+  const phone = req.body.phone;
+
+  const attendee = new Attendee ({
+    fName: fName,
+    lName: lName,
+    phone: phone
+  });
+
+  attendee.save();
 
   res.redirect('/payment');
-
 });
 
 // response from 'done' button on payment page
 app.post('/payment', function(res, req) {
-  res.render('success');
+  res.render('/success');
 });
 
 // listen on local host 3000

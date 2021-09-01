@@ -93,6 +93,10 @@ p {
   font-family: 'GlacialIndifferenceRegular', sans-serif;
 }
 
+.rsvp-button {
+  width: 40%;
+}
+
 .rsvp-form {
   margin: auto;
   max-width: 300px;
