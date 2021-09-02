@@ -21,7 +21,7 @@ const attendeeSchema = new mongoose.Schema({
 // create new model
 const Attendee = mongoose.model('Attendee', attendeeSchema);
 
-var spotsRemaining = 113;
+var spotsRemaining = 111;
 
 // render home page
 app.get('/', function(req, res) {
