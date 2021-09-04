@@ -53,19 +53,15 @@ app.get('/sold-out', function(req, res) {
 
 // response from home page - add attendee to database
 app.post('/', function(req, res) {
-  const fName = req.body.fName;
-  const lName = req.body.lName;
-  const phone = req.body.phone;
-
   const attendee = new Attendee ({
-    fName: fName,
-    lName: lName,
-    phone: phone
+    fName: req.body.fName,
+    lName: req.body.lName,
+    phone: req.body.phone
   });
 
   attendee.save();
 
-  // update the spots count
+  // update the spots remaining
   Attendee.count().then((count) => {
     spotsRemaining = 163 - count;
   });
