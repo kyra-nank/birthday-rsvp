@@ -21,10 +21,13 @@ const attendeeSchema = new mongoose.Schema({
 // create new model
 const Attendee = mongoose.model('Attendee', attendeeSchema);
 
-var spotsRemaining = 97;
+var spotsRemaining = 165;  // removing myself and Kyra (DJ GOODAZ)
 
 // render home page
 app.get('/', function(req, res) {
+  if (spotsRemaining == 0) {
+    res.redirect('/sold-out');
+  } 
   res.render('rsvp', {spotsRemaining: spotsRemaining});
 });
 
@@ -43,6 +46,11 @@ app.get('/success', function(req, res) {
   res.render('success');
 });
 
+// render the sold out page
+app.get('/sold-out', function(req, res) {
+  res.render('sold-out')
+});
+
 // response from home page - add attendee to database
 app.post('/', function(req, res) {
   const fName = req.body.fName;
@@ -59,7 +67,7 @@ app.post('/', function(req, res) {
 
   // update the spots count
   Attendee.count().then((count) => {
-    spotsRemaining = 165 - count;
+    spotsRemaining = 163 - count;
   });
 
   res.redirect('/payment');
@@ -67,7 +75,7 @@ app.post('/', function(req, res) {
 
 // response from 'done' button on payment page
 app.post('/payment', function(res, req) {
-  res.render('/success');
+  res.render('success');
 });
 
 // listen on local host 3000
