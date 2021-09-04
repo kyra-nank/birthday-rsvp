@@ -21,13 +21,13 @@ const attendeeSchema = new mongoose.Schema({
 // create new model
 const Attendee = mongoose.model('Attendee', attendeeSchema);
 
-var spotsRemaining = 165;  // removing myself and Kyra (DJ GOODAZ)
+var spotsRemaining = 57;  // removing myself and Kyra (DJ GOODAZ)
 
 // render home page
 app.get('/', function(req, res) {
   if (spotsRemaining == 0) {
     res.redirect('/sold-out');
-  } 
+  }
   res.render('rsvp', {spotsRemaining: spotsRemaining});
 });
 
